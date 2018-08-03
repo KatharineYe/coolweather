@@ -1,11 +1,9 @@
 package com.better.coolweather.util;
 
 import android.text.TextUtils;
-
 import com.better.coolweather.db.City;
 import com.better.coolweather.db.Country;
 import com.better.coolweather.db.Province;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,8 +23,8 @@ public class Utility {
                 for (int i = 0; i < allProvinces.length(); i++) {
                     JSONObject provinceObject = allProvinces.getJSONObject(i);
                     Province province = new Province();
-                    province.setProvinceName(provinceObject.getString("name"));
                     province.setProvinceCode(provinceObject.getInt("id"));
+                    province.setProvinceName(provinceObject.getString("name"));
                     province.save();
                 }
                 return true;
@@ -47,8 +45,8 @@ public class Utility {
                 for (int i = 0; i < allCities.length(); i++) {
                     JSONObject cityObject = allCities.getJSONObject(i);
                     City city = new City();
-                    city.setCityName(cityObject.getString("name"));
                     city.setCityCode(cityObject.getInt("id"));
+                    city.setCityName(cityObject.getString("name"));
                     city.setProvinceId(provinceId);
                     city.save();
                 }
@@ -71,7 +69,7 @@ public class Utility {
                     JSONObject countryObject = allCountries.getJSONObject(i);
                     Country country = new Country();
                     country.setCountryName(countryObject.getString("name"));
-                    country.setWeatherId(countryObject.getInt("weather_id"));
+                    country.setWeatherId(countryObject.getString("weather_id"));
                     country.setCityId(cityId);
                     country.save();
                 }
